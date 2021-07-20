@@ -1,6 +1,6 @@
 //set up of chart
-var x_axis = d => data.poverty;
-var y_axis = d => data.healthcare;
+var x_axis = d => d.poverty;
+var y_axis = d => d.healthcare;
 
 var x_label = " In Poverty (%)";
 var y_label = " Healthcare (%) ";
@@ -81,7 +81,7 @@ d3.csv("assets/data/data.csv").then (function(data) {
  var toolTip = d3.tip()
  .attr("class", "d3-tip")
  .html(function(d) {
-   return  `${data.state}<br>Poverty: ${data.poverty}<br>Healthcare: ${data.healthcare}<br>`;
+   return  `${d.state}<br>Poverty: ${d.poverty}<br>Healthcare: ${d.healthcare}<br>`;
 });
 
 svg.call(toolTip);
