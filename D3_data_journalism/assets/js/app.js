@@ -1,8 +1,9 @@
+//set up of chart
 var x_axis = d => data.poverty;
 var y_axis = d => data.healthcare;
 
-var x_label = " % Living in Poverty";
-var y_label = " % Without Healthcare";
+var x_label = " In Poverty (%)";
+var y_label = " Healthcare (%) ";
 
 
 var margin = {top: 20, right: 30, bottom: 120, left: 120},
@@ -20,7 +21,7 @@ const svg = d3.select("#scatter")
    .attr('class', 'chart');
 
 //Read the data from the csv
-d3.csv("./assets/data/data.csv").then (function(data) {
+d3.csv("assets/data/data.csv").then (function(data) {
  console.log(data);
  data.forEach(function(data) {
    data.poverty = +data.poverty;
