@@ -26,8 +26,8 @@ d3.csv("assets/data/data.csv").then (function(data) {
  data.forEach(function(data) {
    data.poverty = +data.poverty;
    data.healthcare = +data.healthcare;
-
    });
+
  // Add components for the X axis
  var xaxis = d3.scaleLinear()
    .domain(d3.extent(data, x_axis)).nice()
@@ -55,13 +55,13 @@ d3.csv("assets/data/data.csv").then (function(data) {
    .style('text-anchor', 'middle')
    .text(y_label);
 
- // Add circles for states
+ // Adding circles for states
  var circles = svg.selectAll("circle")
    .data(data)
    .enter()
    .append("circle")
-       .attr("cx", d => { return x(data.poverty); })
-       .attr("cy", d => { return y(data.healthcare); })
+       .attr("cx", d => { return x(d.poverty); })
+       .attr("cy", d => { return y(d.healthcare); })
        .attr("r", 8)
        .attr('class', 'state_circle');
 
