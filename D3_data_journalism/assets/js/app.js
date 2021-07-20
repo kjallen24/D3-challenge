@@ -1,5 +1,5 @@
-var x_axis = d => d.poverty;
-var y_axis = d => d.healthcare;
+var x_axis = d => data.poverty;
+var y_axis = d => data.healthcare;
 
 var x_label = " % Living in Poverty";
 var y_label = " % Without Healthcare";
@@ -10,7 +10,7 @@ var margin = {top: 20, right: 30, bottom: 120, left: 120},
    height = 700 - margin.top - margin.bottom;
 
 
-// append the svg object to the body of the page
+// append the svg to the page
 const svg = d3.select("#scatter")
  .append("svg")
    .attr("width", width + margin.left + margin.right)
@@ -18,16 +18,18 @@ const svg = d3.select("#scatter")
  .append("g")
    .attr("transform", `translate(${margin.left}, ${margin.top})`)
    .attr('class', 'chart');
-//Read the data
-d3.csv("assets/data/data.csv").then (function(data) {
+
+//Read the data from the csv
+d3.csv("./assets/data/data.csv").then (function(data) {
  console.log(data);
  data.forEach(function(data) {
    data.poverty = +data.poverty;
    data.healthcare = +data.healthcare;
+
    });
- // Add X axis
- var x = d3.scaleLinear()
-   .domain(d3.extent(data, xValue)).nice()
+ // Add components for the X axis
+ var xaxis = d3.scaleLinear()
+   .domain(d3.extent(data, x_axis)).nice()
    .range([ 0, width ]);
  var xAxisG = svg.append("g")
    .attr("transform", "translate(0," + height + ")")
@@ -36,10 +38,11 @@ d3.csv("assets/data/data.csv").then (function(data) {
    .attr('class', 'axis-label')
    .attr('x', width / 2)
    .attr('y', 65)
-   .text(xLabel);
- // Add Y axis
- var y = d3.scaleLinear()
-   .domain(d3.extent(data, yValue)).nice()
+   .text(x_label);
+
+ // Add components of the Y axis
+ var yaxis = d3.scaleLinear()
+   .domain(d3.extent(data, y_axis)).nice()
    .range([ height, 0]);
  var yAxisG = svg.append("g")
    .call(d3.axisLeft(y))
@@ -49,32 +52,35 @@ d3.csv("assets/data/data.csv").then (function(data) {
    .attr('y', -60)
    .attr('transform', `rotate(-90)`)
    .style('text-anchor', 'middle')
-   .text(yLabel);
- // Add circles
- var circlesGroup = svg.selectAll("circle")
+   .text(y_label);
+
+ // Add circles for states
+ var circles = svg.selectAll("circle")
    .data(data)
    .enter()
    .append("circle")
-       .attr("cx", d => { return x(d.poverty); })
-       .attr("cy", d => { return y(d.healthcare); })
+       .attr("cx", d => { return x(data.poverty); })
+       .attr("cy", d => { return y(data.healthcare); })
        .attr("r", 8)
-       .attr('class', 'stateCircle');
- // Add circle labels
+       .attr('class', 'state_circle');
+
+ // Add state labels in circles
  svg.selectAll(".text")
    .data(data)
    .enter()
    .append("text")
      .attr("dy", "0.35em")
-     .attr("x", d => { return x(d.poverty); })
-     .attr("y", d => { return y(d.healthcare); })
+     .attr("x", d => { return x(data.poverty); })
+     .attr("y", d => { return y(data.healthcare); })
      .text(d => { return d.abbr; })
-     .attr('class', 'stateText')
+     .attr('class', 'state_text')
      .attr("font-size", "10px");
- // Initialize tooltip
+
+ // setup tooltip
  var toolTip = d3.tip()
  .attr("class", "d3-tip")
  .html(function(d) {
-   return  `${d.state}<br>Poverty: ${d.poverty}<br>Healthcare: ${d.healthcare}<br>`;
+   return  `${data.state}<br>Poverty: ${data.poverty}<br>Healthcare: ${data.healthcare}<br>`;
 });
 // Create tooltip in the chart
 svg.call(toolTip);
