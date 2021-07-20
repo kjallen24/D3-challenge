@@ -1,8 +1,9 @@
-var xValue = d => d.poverty;
-var yValue = d => d.healthcare;
+var x_axis = d => d.poverty;
+var y_axis = d => d.healthcare;
 
-var yLabel = "Lacks Healthcare (%)";
-var xLabel = "In Poverty (%)";
+var x_label = "In Poverty (%)";
+var y_label = "Lacks Healthcare (%)";
+
 
 var margin = {top: 20, right: 30, bottom: 120, left: 120},
    width = 700 - margin.left - margin.right,
