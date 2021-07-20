@@ -1,13 +1,13 @@
 var x_axis = d => d.poverty;
 var y_axis = d => d.healthcare;
 
-var x_label = "In Poverty (%)";
-var y_label = "Lacks Healthcare (%)";
+var x_label = " % Living in Poverty";
+var y_label = " % Without Healthcare";
 
 
 var margin = {top: 20, right: 30, bottom: 120, left: 120},
    width = 700 - margin.left - margin.right,
-   height = 600 - margin.top - margin.bottom;
+   height = 700 - margin.top - margin.bottom;
 
 
 // append the svg object to the body of the page
