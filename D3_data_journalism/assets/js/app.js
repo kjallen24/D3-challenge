@@ -1,4 +1,4 @@
-//set up of chart
+//Initaial Set up of chart
 var x_axis = d => d.poverty;
 var y_axis = d => d.healthcare;
 
@@ -32,6 +32,7 @@ d3.csv("assets/data/data.csv").then (function(data) {
  var xaxis = d3.scaleLinear()
    .domain(d3.extent(data, x_axis)).nice()
    .range([ 0, width ]);
+
  var xAxisG = svg.append("g")
    .attr("transform", "translate(0," + height + ")")
    .call(d3.axisBottom(x))
@@ -45,6 +46,7 @@ d3.csv("assets/data/data.csv").then (function(data) {
  var yaxis = d3.scaleLinear()
    .domain(d3.extent(data, y_axis)).nice()
    .range([ height, 0]);
+
  var yAxisG = svg.append("g")
    .call(d3.axisLeft(y))
    .append('text')
@@ -56,7 +58,7 @@ d3.csv("assets/data/data.csv").then (function(data) {
    .text(y_label);
 
  // Adding circles for states
- var circles = svg.selectAll("circle")
+ var state_circles = svg.selectAll("circle")
    .data(data)
    .enter()
    .append("circle")
