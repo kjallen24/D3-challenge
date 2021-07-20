@@ -71,8 +71,8 @@ d3.csv("assets/data/data.csv").then (function(data) {
    .enter()
    .append("text")
      .attr("dy", "0.35em")
-     .attr("x", d => { return x(data.poverty); })
-     .attr("y", d => { return y(data.healthcare); })
+     .attr("x", d => { return x(d.poverty); })
+     .attr("y", d => { return y(d.healthcare); })
      .text(d => { return d.abbr; })
      .attr('class', 'state_text')
      .attr("font-size", "10px");
