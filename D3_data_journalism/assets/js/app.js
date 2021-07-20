@@ -76,19 +76,19 @@ d3.csv("./assets/data/data.csv").then (function(data) {
      .attr('class', 'state_text')
      .attr("font-size", "10px");
 
- // setup tooltip
+ // setup tooltip & event listeners
  var toolTip = d3.tip()
  .attr("class", "d3-tip")
  .html(function(d) {
    return  `${data.state}<br>Poverty: ${data.poverty}<br>Healthcare: ${data.healthcare}<br>`;
 });
-// Create tooltip in the chart
+
 svg.call(toolTip);
-// Create event listeners to display and hide the tooltip
+
 circlesGroup.on("mouseover", function(data) {
  toolTip.show(data, this);
 })
- // onmouseout event
+
  .on("mouseout", function(data, index) {
    toolTip.hide(data);
  });
