@@ -11,7 +11,7 @@ var margin = {top: 20, right: 30, bottom: 120, left: 120},
    height = 700 - margin.top - margin.bottom;
 
 
-// append the scatter plot svg to the page
+// append the scatter plot svg to the page and set configurations for plot margins
 const svg = d3.select("#scatter")
  .append("svg")
    .attr("width", width + margin.left + margin.right)
