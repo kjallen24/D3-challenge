@@ -33,7 +33,7 @@ d3.csv("assets/data/data.csv").then (function(data) {
    .domain(d3.extent(data, x_axis)).nice()
    .range([ 0, width ]);
 
- var xAxisG = svg.append("g")
+ var xAxisG = svg.append("g") //adding x-axis variables to the plot
    .attr("transform", "translate(0," + height + ")")
    .call(d3.axisBottom(x))
    .append('text')
@@ -47,7 +47,7 @@ d3.csv("assets/data/data.csv").then (function(data) {
    .domain(d3.extent(data, y_axis)).nice()
    .range([ height, 0]);
 
- var yAxisG = svg.append("g")
+ var yAxisG = svg.append("g") //adding 
    .call(d3.axisLeft(y))
    .append('text')
    .attr('class', 'axis-label')
