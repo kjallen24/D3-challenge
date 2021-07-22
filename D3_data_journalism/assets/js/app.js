@@ -65,7 +65,7 @@ d3.csv("assets/data/data.csv").then (function(data) {
        .attr("cx", d => { return x(d.poverty); })
        .attr("cy", d => { return y(d.healthcare); })
        .attr("r", 8)
-       .attr('class', 'state_circle');
+       .attr('class', 'state');
 
  // Add state labels in circles
  svg.selectAll(".text")
@@ -76,7 +76,7 @@ d3.csv("assets/data/data.csv").then (function(data) {
      .attr("x", d => { return x(d.poverty); })
      .attr("y", d => { return y(d.healthcare); })
      .text(d => { return d.abbr; })
-     .attr('class', 'state_text')
+     .attr('class', 'abbr')
      .attr("font-size", "10px");
 
  // setup tooltip & event listeners
