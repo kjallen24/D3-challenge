@@ -24,8 +24,8 @@ const svg = d3.select("#scatter")
 d3.csv("assets/data/data.csv").then (function(data) {
  console.log(data);
  data.forEach(function(data) {
-   data.poverty = +data.poverty;
-   data.healthcare = +data.healthcare;
+   d.poverty = +d.poverty;
+   d.healthcare = +d.healthcare;
    });
 
  // Add components for the X axis
