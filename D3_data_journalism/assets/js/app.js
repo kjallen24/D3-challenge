@@ -47,7 +47,7 @@ d3.csv("assets/data/data.csv").then (function(data) {
    .domain(d3.extent(data, y_axis)).nice()
    .range([ height, 0]);
 
- var yAxisG = svg.append("g") //adding 
+ var yAxisG = svg.append("g") //adding y-axis variables to the plot
    .call(d3.axisLeft(y))
    .append('text')
    .attr('class', 'axis-label')
