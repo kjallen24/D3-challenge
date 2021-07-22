@@ -1,4 +1,4 @@
-//Initaial Set up of chart
+//Initial Set up of chart
 var x_axis = d => d.poverty;
 var y_axis = d => d.healthcare;
 
